@@ -36,3 +36,7 @@ describe "Empresa de Servicios" {
 		assert.that(empresa.esDeGenteAcotada())
 	}
 }
+
+describe "Solicitantes" {
+	
+}

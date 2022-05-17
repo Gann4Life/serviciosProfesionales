@@ -43,6 +43,7 @@ class ProfesionalLibre {
 	var universidad
 	var honorariosPorHora
 	var provinciasDondePuedeTrabajar
+	var totalRecaudado = 0
 	
 	method universidad() { return universidad }
 	method universidad(univ) { universidad = univ }
@@ -50,6 +51,12 @@ class ProfesionalLibre {
 	method honorariosPorHora() = honorariosPorHora
 	
 	method provinciasDondePuedeTrabajar() = provinciasDondePuedeTrabajar
+	
+	method cobrar(importe) { totalRecaudado += importe }
+	method pasarDinero(profesional, cantidad) { 
+		totalRecaudado -= cantidad
+		profesional.cobrar(cantidad)
+	}
 }
 
 class Universidad {
