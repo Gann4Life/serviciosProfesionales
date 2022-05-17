@@ -59,18 +59,12 @@ class EmpresaDeServicios {
 	
 	method esDeGenteAcotada() = !profesionalesContratados.any{profesional => profesional.provinciasDondePuedeTrabajar().size() > 3}
 	
-	//method puedeSatisfacerA(solicitante) = solicitante.puedeSerAtendidoPor(profesionalesContratados)
 	method puedeSatisfacerA(solicitante) = profesionalesContratados.any{profesional => solicitante.puedeSerAtendidoPor(profesional)}
 }
 
 class Persona {
 	var provincia
 	method provincia() = provincia
-	/*method puedeSerAtendidoPor(profesionales) {
-		return profesionales.any{profesional => {
-			profesional.provinciasDondePuedeTrabajar().any{prov => prov == provincia}
-		}}
-	}*/
 	method puedeSerAtendidoPor(profesional) = profesional.provinciasDondePuedeTrabajar().any{prov => prov == provincia}
 }
 
