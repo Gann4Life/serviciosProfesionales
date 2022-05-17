@@ -1,3 +1,5 @@
+import solicitantes.*
+
 object asociacionDeProfesionalesDelLitoral {
 	var totalRecaudado = 0
 	method recibirDonacion(valor) { totalRecaudado += valor }
@@ -83,11 +85,5 @@ class EmpresaDeServicios {
 	method esDeGenteAcotada() = !profesionalesContratados.any{profesional => profesional.provinciasDondePuedeTrabajar().size() > 3}
 	
 	method puedeSatisfacerA(solicitante) = profesionalesContratados.any{profesional => solicitante.puedeSerAtendidoPor(profesional)}
-}
-
-class Persona {
-	var provincia
-	method provincia() = provincia
-	method puedeSerAtendidoPor(profesional) = profesional.provinciasDondePuedeTrabajar().any{prov => prov == provincia}
 }
 
