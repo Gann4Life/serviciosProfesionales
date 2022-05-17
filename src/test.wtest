@@ -1,0 +1,38 @@
+import profesionales.*
+
+describe "Empresa de Servicios" {
+	
+	const universidad = new Universidad(
+		provincia="Buenos Aires",
+		honorariosPorHoraRecomendados=3500
+	)
+	const otraUniversidad = new Universidad(
+		provincia="Santa Fe",
+		honorariosPorHoraRecomendados=2500
+	)
+	
+	const alberto = new ProfesionalAsociado(universidad=universidad)
+	const roberto = new ProfesionalAsociado(universidad=universidad)
+	const jose = new ProfesionalAsociado(universidad=otraUniversidad)
+	
+	test "Universidades formadoras" {
+		const empresa = new EmpresaDeServicios(
+			honorarioDeReferencia=2525,
+			profesionalesContratados=#{
+				alberto, roberto, jose
+			}
+		)
+		assert.equals(#{universidad, otraUniversidad}, empresa.universidadesFormadoras())
+	}
+	
+	test "Es de gente acotada?"
+	{	
+		const empresa = new EmpresaDeServicios(
+			honorarioDeReferencia=2525,
+			profesionalesContratados=#{
+				alberto, roberto, jose
+			}
+		)	
+		assert.that(empresa.esDeGenteAcotada())
+	}
+}
