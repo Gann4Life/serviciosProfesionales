@@ -1,3 +1,9 @@
+object asociacionDeProfesionalesDelLitoral {
+	var totalRecaudado
+	
+	method recibir(valor) { totalRecaudado += valor }
+}
+
 // esta clase está completa, no necesita nada más
 class ProfesionalAsociado {
 	var universidad
@@ -8,6 +14,11 @@ class ProfesionalAsociado {
 	method provinciasDondePuedeTrabajar() { return #{"Entre Ríos", "Corrientes", "Santa Fe"} }
 	
 	method honorariosPorHora() { return 3000 }
+	
+	method cobrar(importe) {
+		// Donar todo a la asociación
+		asociacionDeProfesionalesDelLitoral.recibir(importe)
+	}
 }
 
 
