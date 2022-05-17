@@ -1,7 +1,6 @@
 object asociacionDeProfesionalesDelLitoral {
-	var totalRecaudado
-	
-	method recibir(valor) { totalRecaudado += valor }
+	var totalRecaudado = 0
+	method recibirDonacion(valor) { totalRecaudado += valor }
 }
 
 // esta clase está completa, no necesita nada más
@@ -17,7 +16,7 @@ class ProfesionalAsociado {
 	
 	method cobrar(importe) {
 		// Donar todo a la asociación
-		asociacionDeProfesionalesDelLitoral.recibir(importe)
+		asociacionDeProfesionalesDelLitoral.recibirDonacion(importe)
 	}
 }
 
@@ -32,6 +31,10 @@ class ProfesionalVinculado {
 	method provinciasDondePuedeTrabajar() = #{ self.universidad().provincia() }
 	
 	method honorariosPorHora() = self.universidad().honorariosPorHoraRecomendados()
+	method cobrar(importe) {
+		universidad.recibirDonacion(importe/2)
+		// La otra mitad la gasta, no hay porque realizar más acciones.
+	}
 }
 
 
@@ -52,9 +55,11 @@ class ProfesionalLibre {
 class Universidad {
 	var provincia
 	var honorariosPorHoraRecomendados
+	var totalRecaudado = 0
 	
 	method provincia() = provincia
 	method honorariosPorHoraRecomendados() = honorariosPorHoraRecomendados
+	method recibirDonacion(valor) { totalRecaudado += valor }
 }
 
 class EmpresaDeServicios {
